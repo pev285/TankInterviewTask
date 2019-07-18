@@ -192,7 +192,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4688886267969218, guid: d1c1ba5d219bc3a4393004436b2e0105, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4688886267969218, guid: d1c1ba5d219bc3a4393004436b2e0105, type: 2}
       propertyPath: m_LocalPosition.z
@@ -217,6 +217,10 @@ Prefab:
     - target: {fileID: 4688886267969218, guid: d1c1ba5d219bc3a4393004436b2e0105, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480758116917264, guid: d1c1ba5d219bc3a4393004436b2e0105, type: 2}
+      propertyPath: m_Name
+      value: Lights
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1c1ba5d219bc3a4393004436b2e0105, type: 2}
@@ -257,7 +261,7 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: 1930cd8c7d8b7aa47ae7ee976f2e65a5, type: 2}
-  m_TreeDistance: 5000
+  m_TreeDistance: 2000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50

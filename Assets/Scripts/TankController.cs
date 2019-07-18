@@ -6,15 +6,16 @@ namespace TanksInterviewDemo
 {
 	public class TankController : MonoBehaviour 
 	{
-        private float MovementSpeed;
+        [SerializeField]
+        private float MovementSpeed = 5f;
+        [SerializeField]
+        private float HRotationSpeed = 15f;
 
         private Rigidbody RB;
         private Transform Transform;
 
-        private float VerticalAxis;
-        private float HorizontalAxis;
-
-        private float Mouse;
+        private Vector3 MovementInput;
+        private Vector3 RotationInput;
 
         private void Awake()
         {
@@ -24,15 +25,23 @@ namespace TanksInterviewDemo
 
         private void Update()
         {
-            VerticalAxis = Input.GetAxis("Vertical");
-            HorizontalAxis = Input.GetAxis("Horizontal");
+            MovementInput.z= Input.GetAxis("Vertical");
+            MovementInput.x = Input.GetAxis("Horizontal");
+
+            RotationInput.x = Input.GetAxis("Mouse X");
+            RotationInput.y = Input.GetAxis("Mouse Y");
         }
 
         private void FixedUpdate()
         {
-            var velocity = new Vector3(HorizontalAxis, VerticalAxis, 0).normalized * MovementSpeed;
+            float horizontalRotationAmount = RotationInput.x * HRotationSpeed * Time.deltaTime;
+            //Quaternion newRotation = Quaternion.Euler(0, horizontalRotationAmount, 0)* RB.rotation;
+            Quaternion newRotation = RB.rotation * Quaternion.Euler(0, horizontalRotationAmount, 0);
 
-            RB.velocity = velocity;
+            RB.MoveRotation(newRotation);
+
+            var velocity = MovementInput.normalized * MovementSpeed;
+            RB.velocity = RB.rotation * velocity;
         }
 
     } // END OF CLASS ///
