@@ -9,18 +9,28 @@ namespace TanksInterviewDemo
         [SerializeField]
         private float MovementSpeed = 5f;
         [SerializeField]
-        private float HRotationSpeed = 15f;
+        private float HorizontalRotationSpeed = 15f;
+        private float VerticalRotationSpeed = 15f;
+
+        [SerializeField]
+        private Transform FirePoint;
 
         private Rigidbody RB;
         private Transform Transform;
 
+        private AimLineDraftsman AimLine;
+
         private Vector3 MovementInput;
         private Vector3 RotationInput;
+
+
 
         private void Awake()
         {
             RB = GetComponent<Rigidbody>();
             Transform = GetComponent<Transform>();
+
+            AimLine = GetComponent<AimLineDraftsman>();
         }
 
         private void Update()
@@ -30,22 +40,41 @@ namespace TanksInterviewDemo
 
             RotationInput.x = Input.GetAxis("Mouse X");
             RotationInput.y = Input.GetAxis("Mouse Y");
+
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+                AimLine.Draw();
         }
 
         private void FixedUpdate()
         {
-            float horizontalRotationAmount = RotationInput.x * HRotationSpeed * Time.deltaTime;
-            //Quaternion newRotation = Quaternion.Euler(0, horizontalRotationAmount, 0)* RB.rotation;
-            Quaternion newRotation = RB.rotation * Quaternion.Euler(0, horizontalRotationAmount, 0);
+            RotateVertical();
+            RotateHorizontal();
 
-            RB.MoveRotation(newRotation);
+            Move();
+        }
 
+        private void Move()
+        {
             var velocity = MovementInput.normalized * MovementSpeed;
             RB.velocity = RB.rotation * velocity;
         }
 
-    } // END OF CLASS ///
+        private void RotateVertical()
+        {
+            float rotationAmount = RotationInput.y * VerticalRotationSpeed * Time.deltaTime;
+
+            //.....
+        }
+
+        private void RotateHorizontal()
+        {
+            float rotationAmount = RotationInput.x * HorizontalRotationSpeed * Time.deltaTime;
+            Quaternion newRotation = RB.rotation * Quaternion.Euler(0, rotationAmount, 0);
+
+            RB.MoveRotation(newRotation);
+        }
+    } 
 	
-} // END OF NAMESPACE ///
+} 
 
 
