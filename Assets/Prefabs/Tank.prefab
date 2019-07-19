@@ -20,8 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4688886267969218}
   - component: {fileID: 54665797932831814}
+  - component: {fileID: 114075295426063842}
   - component: {fileID: 114081610016375722}
   - component: {fileID: 114343739340927148}
+  - component: {fileID: 114272270866877804}
   - component: {fileID: 120378673416456960}
   m_Layer: 0
   m_Name: Tank
@@ -239,13 +241,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1741503370642214}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4504349153508408}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!4 &4146861414801302
 Transform:
   m_ObjectHideFlags: 1
@@ -751,6 +753,23 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1688599881116790}
   m_Enabled: 1
+--- !u!114 &114075295426063842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147947797474554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e514f6f193c6e0b449703cd0e2eae6dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeed: 5
+  HorizontalRotationSpeed: 20
+  VerticalRotationSpeed: 15
+  FirePoint: {fileID: 4127568319428582}
+  GunHolder: {fileID: 4677266544344690}
+  WeaponBase: {fileID: 4511826565239328}
 --- !u!114 &114081610016375722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -762,8 +781,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3e8bc315ba6bf49b9abbd50304debc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 5
-  HorizontalRotationSpeed: 15
+  StartingFireForce: 20
+--- !u!114 &114272270866877804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147947797474554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc06c0af73016af498dd5edbd447b5a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   FirePoint: {fileID: 4127568319428582}
 --- !u!114 &114343739340927148
 MonoBehaviour:

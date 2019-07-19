@@ -4,9 +4,13 @@ using UnityEngine;
 
 namespace TanksInterviewDemo
 {
+    [RequireComponent(typeof(TrajectoryCalculator), typeof(LineRenderer))]
     public class AimLineDraftsman : MonoBehaviour
     {
+        private bool IsEnabled;
+
         private LineRenderer Line;
+        private TrajectoryCalculator Trajectory;
 
         private int PosCount = 10;
         private Vector3[] Positions;
@@ -14,19 +18,42 @@ namespace TanksInterviewDemo
         private void Awake()
         {
             Line = GetComponent<LineRenderer>();
+            Trajectory = GetComponent<TrajectoryCalculator>();
 
             Positions = new Vector3[PosCount];
-            Line.SetVertexCount(PosCount);
-
-            Positions[0] = Vector3.zero;
-            Positions[1] = new Vector3(250, 10, 250);
+            Line.positionCount = PosCount;
         }
 
-
-
-        public void Draw()
+        private void Update()
         {
+            if (IsEnabled)
+                Draw();
+        }
+
+        public void On()
+        {
+            IsEnabled = true;
+            Line.enabled = true;
+        }
+
+        public void Off()
+        {
+            IsEnabled = false;
+            Line.enabled = false;
+        }
+
+        private void Draw()
+        {
+            CalculatePositions();
             Line.SetPositions(Positions);
+        }
+
+        private void CalculatePositions()
+        {
+            var step = 1f / (PosCount-1);
+
+            for (int i = 0; i < PosCount; i++)
+                Positions[i] = Trajectory.GetPositionAt(i * step);
         }
     } 
 } 

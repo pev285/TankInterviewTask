@@ -4,34 +4,30 @@ using UnityEngine;
 
 namespace TanksInterviewDemo
 {
+    [RequireComponent(typeof(TankMotor), typeof(TrajectoryCalculator), typeof(AimLineDraftsman))]
 	public class TankController : MonoBehaviour 
 	{
         [SerializeField]
-        private float MovementSpeed = 5f;
-        [SerializeField]
-        private float HorizontalRotationSpeed = 15f;
-        private float VerticalRotationSpeed = 15f;
-
-        [SerializeField]
-        private Transform FirePoint;
-
-        private Rigidbody RB;
-        private Transform Transform;
-
-        private AimLineDraftsman AimLine;
+        private float StartingFireForce = 20f;
 
         private Vector3 MovementInput;
         private Vector3 RotationInput;
 
+        private bool IsAiming = false;
 
+        private TankMotor Motor;
+        private AimLineDraftsman AimLine;
+        private TrajectoryCalculator TrajectoryCalculator;
 
         private void Awake()
         {
-            RB = GetComponent<Rigidbody>();
-            Transform = GetComponent<Transform>();
-
+            Motor = GetComponent<TankMotor>();
             AimLine = GetComponent<AimLineDraftsman>();
+            TrajectoryCalculator = GetComponent<TrajectoryCalculator>();
+
+            TrajectoryCalculator.SetFireForce(StartingFireForce);
         }
+
 
         private void Update()
         {
@@ -42,37 +38,26 @@ namespace TanksInterviewDemo
             RotationInput.y = Input.GetAxis("Mouse Y");
 
             if (Input.GetKeyDown(KeyCode.Alpha0))
-                AimLine.Draw();
+                ToggleAiming();
         }
 
         private void FixedUpdate()
         {
-            RotateVertical();
-            RotateHorizontal();
+            Motor.RotateVertical(RotationInput.y);
+            Motor.RotateHorizontal(RotationInput.x);
 
-            Move();
+            Motor.Move(MovementInput);
         }
 
-        private void Move()
+        private void ToggleAiming()
         {
-            var velocity = MovementInput.normalized * MovementSpeed;
-            RB.velocity = RB.rotation * velocity;
+            IsAiming = !IsAiming;
+            if (IsAiming)
+                AimLine.On();
+            else
+                AimLine.Off();
         }
 
-        private void RotateVertical()
-        {
-            float rotationAmount = RotationInput.y * VerticalRotationSpeed * Time.deltaTime;
-
-            //.....
-        }
-
-        private void RotateHorizontal()
-        {
-            float rotationAmount = RotationInput.x * HorizontalRotationSpeed * Time.deltaTime;
-            Quaternion newRotation = RB.rotation * Quaternion.Euler(0, rotationAmount, 0);
-
-            RB.MoveRotation(newRotation);
-        }
     } 
 	
 } 
