@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace TanksInterviewDemo
 {
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody), typeof(TrajectoryCalculator))]
     public class TankMotor : MonoBehaviour
     {
+        private const float CooldownDuration = 1f;
+
         private const float MinVerticalAngle = 0f;
         private const float MaxVerticalAngle = 80f;
 
@@ -30,15 +32,23 @@ namespace TanksInterviewDemo
         [SerializeField]
         private Transform WeaponBase;
 
+        [Space(10)]
+        [SerializeField]
+        private GameObject BulletPrefab;
+
 
         private Rigidbody RB;
+        private TrajectoryCalculator TrajectoryCalculator;
 
         private float VerticalGunAngle;
         private float HorizontalGunAngle;
 
+        private float CooldownTime;
+
         private void Awake()
         {
             RB = GetComponent<Rigidbody>();
+            TrajectoryCalculator = GetComponent<TrajectoryCalculator>();
         }
 
         private void Start()
@@ -47,6 +57,20 @@ namespace TanksInterviewDemo
             HorizontalGunAngle = 0;
         }
 
+        private void Update()
+        {
+            if (CooldownTime > 0)
+                CooldownTime -= Time.deltaTime;
+        }
+
+        public void Fire()
+        {
+            if (CooldownTime > 0)
+                return;
+
+            CooldownTime = CooldownDuration;
+            StartABullet();
+        }
 
         public void Move(Vector3 localDirection)
         {
@@ -98,6 +122,13 @@ namespace TanksInterviewDemo
             }
         }
 
+        private void StartABullet()
+        {
+            var bullet = Instantiate(BulletPrefab, FirePoint.position, FirePoint.rotation);
+
+            var rb = bullet.GetComponent<Rigidbody>();
+            rb.velocity = FirePoint.forward * TrajectoryCalculator.FireForce;
+        }
     }
 }
 

@@ -39,6 +39,9 @@ namespace TanksInterviewDemo
 
             if (Input.GetKeyDown(KeyCode.Alpha0))
                 ToggleAiming();
+
+            if (Input.GetButtonDown("Fire1"))
+                Motor.Fire();
         }
 
         private void FixedUpdate()
