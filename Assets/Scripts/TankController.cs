@@ -8,12 +8,16 @@ namespace TanksInterviewDemo
 	public class TankController : MonoBehaviour 
 	{
         [SerializeField]
-        private float StartingFireSpeed = 20f;
+        private float StartingFireSpeed = 40f;
+
+        private Camera Camera;
+        private UI UIcontroller;
 
         private Vector3 MovementInput;
         private Vector3 RotationInput;
 
         private bool IsAiming = false;
+
 
         private TankMotor Motor;
         private AimLineDraftsman AimLine;
@@ -26,6 +30,12 @@ namespace TanksInterviewDemo
             TrajectoryCalculator = GetComponent<TrajectoryCalculator>();
 
             TrajectoryCalculator.SetFireSpeed(StartingFireSpeed);
+        }
+
+        private void Start()
+        {
+            UIcontroller = Root.Instance.GetUI();
+            Camera = Root.Instance.GetMainCamera();
         }
 
 
@@ -50,6 +60,26 @@ namespace TanksInterviewDemo
             Motor.RotateHorizontal(RotationInput.x);
 
             Motor.Move(MovementInput);
+
+            AdjustAimPosition();
+        }
+
+        private void AdjustAimPosition()
+        {
+            var worldPos = TrajectoryCalculator.GetEarthHitPosition();
+            var screenPos = Camera.WorldToScreenPoint(worldPos);
+
+            UIcontroller.PositionAim(screenPos);
+
+            var min = Root.Instance.GetLevelMin();
+            var max = Root.Instance.GetLevelMax();
+
+            if (worldPos.x < min.x || worldPos.z < min.z)
+                UIcontroller.SetAimRed();
+            else if (worldPos.x > max.x || worldPos.z > max.z)
+                UIcontroller.SetAimRed();
+            else
+                UIcontroller.SetAimBlack();
         }
 
         private void ToggleAiming()

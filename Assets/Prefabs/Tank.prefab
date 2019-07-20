@@ -807,6 +807,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingFireSpeed: 20
+  Camera: {fileID: 20622339394735914}
+  UIcontroller: {fileID: 0}
 --- !u!120 &120818034230637528
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -852,13 +854,13 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.3089428
-        inSlope: 0
-        outSlope: 0
+        value: 0.04878235
+        inSlope: -2.6643043
+        outSlope: -2.6643043
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 1
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
