@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4716551690183824}
   - component: {fileID: 33171186643968498}
   - component: {fileID: 23459180168117394}
-  - component: {fileID: 136193882371134582}
   m_Layer: 0
   m_Name: BackwardLeft
   m_TagString: Untagged
@@ -78,7 +77,6 @@ GameObject:
   - component: {fileID: 4360133260438166}
   - component: {fileID: 33621686959385468}
   - component: {fileID: 23079201187496538}
-  - component: {fileID: 136792914011018008}
   m_Layer: 0
   m_Name: ForwardRight
   m_TagString: Untagged
@@ -210,7 +208,6 @@ GameObject:
   - component: {fileID: 4111142798416338}
   - component: {fileID: 33935050001523780}
   - component: {fileID: 23293578345265752}
-  - component: {fileID: 136218665155723806}
   m_Layer: 0
   m_Name: BackwardRight
   m_TagString: Untagged
@@ -228,7 +225,6 @@ GameObject:
   - component: {fileID: 4051825769663790}
   - component: {fileID: 33041021973459474}
   - component: {fileID: 23181339349809198}
-  - component: {fileID: 136100197492793136}
   m_Layer: 0
   m_Name: ForwardLeft
   m_TagString: Untagged
@@ -810,7 +806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementSpeed: 5
   HorizontalRotationSpeed: 20
-  VerticalRotationSpeed: 15
+  VerticalRotationSpeed: 30
   FirePoint: {fileID: 4900594608200978}
   GunHolder: {fileID: 4116185758155968}
   WeaponBase: {fileID: 4652549130895876}
@@ -942,58 +938,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!136 &136100197492793136
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1949503899970242}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136193882371134582
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1046557514260504}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136218665155723806
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1859113941045480}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136792914011018008
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181473087078938}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198003699215123456
 ParticleSystem:
   m_ObjectHideFlags: 1

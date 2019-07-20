@@ -7,32 +7,32 @@ namespace TanksInterviewDemo
 	public class UI : MonoBehaviour 
 	{
         [SerializeField]
-        private RectTransform Aim;
+        private RectTransform AimBase;
         [SerializeField]
-        private GameObject BlackImage;
+        private GameObject AllowedAim;
         [SerializeField]
-        private GameObject RedImage;
+        private GameObject RestrictedAim;
 
         private void Awake()
         {
-            SetAimBlack();
+            SetAimAllowed();
         }
 
         public void PositionAim(Vector3 position)
         {
-            Aim.position = position;
+            AimBase.position = position;
         }
 
-        public void SetAimBlack()
+        public void SetAimAllowed()
         {
-            RedImage.SetActive(false);
-            BlackImage.SetActive(true);
+            AllowedAim.SetActive(true);
+            RestrictedAim.SetActive(false);
         }
 
-        public void SetAimRed()
+        public void SetAimRestricted()
         {
-            RedImage.SetActive(true);
-            BlackImage.SetActive(false);
+            AllowedAim.SetActive(false);
+            RestrictedAim.SetActive(true);
         }
 	
 	} 

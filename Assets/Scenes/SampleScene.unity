@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 176926105}
   - component: {fileID: 176926104}
   m_Layer: 5
-  m_Name: RedAim
+  m_Name: RestrictedAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,9 +278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa051f86da8cc674b8c1f8f29c4b2982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Aim: {fileID: 1899804624}
-  BlackImage: {fileID: 1348352918}
-  RedImage: {fileID: 176926103}
+  AimBase: {fileID: 1899804624}
+  AllowedAim: {fileID: 1348352918}
+  RestrictedAim: {fileID: 176926103}
 --- !u!114 &664736973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 1348352920}
   - component: {fileID: 1348352919}
   m_Layer: 5
-  m_Name: GreenAim
+  m_Name: AllowedAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

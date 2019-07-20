@@ -16,8 +16,8 @@ namespace TanksInterviewDemo
         private Vector3 MovementInput;
         private Vector3 RotationInput;
 
-        private bool IsAiming = false;
-
+        private bool IsAimngLineOn = false;
+        private bool IsShootingAllowed = false;
 
         private TankMotor Motor;
         private AimLineDraftsman AimLine;
@@ -48,9 +48,9 @@ namespace TanksInterviewDemo
             RotationInput.y = Input.GetAxis("Mouse Y");
 
             if (Input.GetKeyDown(KeyCode.Alpha0))
-                ToggleAiming();
+                ToggleAimingLine();
 
-            if (Input.GetButtonDown("Fire1"))
+            if (IsShootingAllowed && Input.GetKeyDown(KeyCode.Mouse1))
                 Motor.Fire();
         }
 
@@ -70,22 +70,32 @@ namespace TanksInterviewDemo
             var screenPos = Camera.WorldToScreenPoint(worldPos);
 
             UIcontroller.PositionAim(screenPos);
+            IsShootingAllowed = GetShootingAllowed(worldPos);
 
+            if (IsShootingAllowed)
+                UIcontroller.SetAimAllowed();
+            else
+                UIcontroller.SetAimRestricted();
+        }
+
+        private bool GetShootingAllowed(Vector3 worldPos)
+        {
             var min = Root.Instance.GetLevelMin();
             var max = Root.Instance.GetLevelMax();
 
             if (worldPos.x < min.x || worldPos.z < min.z)
-                UIcontroller.SetAimRed();
-            else if (worldPos.x > max.x || worldPos.z > max.z)
-                UIcontroller.SetAimRed();
-            else
-                UIcontroller.SetAimBlack();
+                return false;
+
+            if (worldPos.x > max.x || worldPos.z > max.z)
+                return false;
+
+            return true;
         }
 
-        private void ToggleAiming()
+        private void ToggleAimingLine()
         {
-            IsAiming = !IsAiming;
-            if (IsAiming)
+            IsAimngLineOn = !IsAimngLineOn;
+            if (IsAimngLineOn)
                 AimLine.On();
             else
                 AimLine.Off();
