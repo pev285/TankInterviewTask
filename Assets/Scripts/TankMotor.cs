@@ -127,7 +127,7 @@ namespace TanksInterviewDemo
             var bullet = Instantiate(BulletPrefab, FirePoint.position, FirePoint.rotation);
 
             var rb = bullet.GetComponent<Rigidbody>();
-            rb.velocity = FirePoint.forward * TrajectoryCalculator.FireForce;
+            rb.velocity = FirePoint.forward * TrajectoryCalculator.FireSpeed;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace TanksInterviewDemo
 	public class TankController : MonoBehaviour 
 	{
         [SerializeField]
-        private float StartingFireForce = 20f;
+        private float StartingFireSpeed = 20f;
 
         private Vector3 MovementInput;
         private Vector3 RotationInput;
@@ -25,7 +25,7 @@ namespace TanksInterviewDemo
             AimLine = GetComponent<AimLineDraftsman>();
             TrajectoryCalculator = GetComponent<TrajectoryCalculator>();
 
-            TrajectoryCalculator.SetFireForce(StartingFireForce);
+            TrajectoryCalculator.SetFireSpeed(StartingFireSpeed);
         }
 
 

@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3e8bc315ba6bf49b9abbd50304debc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingFireForce: 20
+  StartingFireSpeed: 20
 --- !u!120 &120818034230637528
 LineRenderer:
   m_ObjectHideFlags: 1
