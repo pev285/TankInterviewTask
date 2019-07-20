@@ -195,7 +195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &176926104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 664736973}
   - component: {fileID: 664736972}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,12 +430,12 @@ GameObject:
   - component: {fileID: 1348352920}
   - component: {fileID: 1348352919}
   m_Layer: 5
-  m_Name: BlackAim
+  m_Name: GreenAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1348352919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,16 +588,6 @@ Prefab:
     - target: {fileID: 4301378651129460, guid: d1c1ba5d219bc3a4393004436b2e0105, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114949514806944774, guid: d1c1ba5d219bc3a4393004436b2e0105,
-        type: 2}
-      propertyPath: UIcontroller
-      value: 
-      objectReference: {fileID: 664736972}
-    - target: {fileID: 114949514806944774, guid: d1c1ba5d219bc3a4393004436b2e0105,
-        type: 2}
-      propertyPath: StartingFireSpeed
-      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1c1ba5d219bc3a4393004436b2e0105, type: 2}

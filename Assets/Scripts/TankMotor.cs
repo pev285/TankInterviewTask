@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TanksInterviewDemo
 {
-    [RequireComponent(typeof(Rigidbody), typeof(TrajectoryCalculator))]
+    [RequireComponent(typeof(Rigidbody), typeof(TrajectoryCalculator), typeof(TankEffects))]
     public class TankMotor : MonoBehaviour
     {
         private const float CooldownDuration = 1f;
@@ -36,8 +36,9 @@ namespace TanksInterviewDemo
         [SerializeField]
         private GameObject BulletPrefab;
 
-
         private Rigidbody RB;
+
+        private TankEffects Effects;
         private TrajectoryCalculator TrajectoryCalculator;
 
         private float VerticalGunAngle;
@@ -48,6 +49,8 @@ namespace TanksInterviewDemo
         private void Awake()
         {
             RB = GetComponent<Rigidbody>();
+
+            Effects = GetComponent<TankEffects>();
             TrajectoryCalculator = GetComponent<TrajectoryCalculator>();
         }
 
@@ -128,6 +131,8 @@ namespace TanksInterviewDemo
 
             var rb = bullet.GetComponent<Rigidbody>();
             rb.velocity = FirePoint.forward * TrajectoryCalculator.FireSpeed;
+
+            Effects.PlayShoot();
         }
     }
 }

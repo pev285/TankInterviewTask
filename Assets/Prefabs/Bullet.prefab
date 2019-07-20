@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4849824112423906}
   - component: {fileID: 33347848519155256}
   - component: {fileID: 23267079369795390}
+  - component: {fileID: 114490528209165954}
+  - component: {fileID: 114401230264900734}
   - component: {fileID: 135801793868140220}
   - component: {fileID: 54138327313502320}
   m_Layer: 0
@@ -100,6 +102,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114401230264900734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1941035764564740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335e10ffe85259544b6aa2f151211f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114490528209165954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1941035764564740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57bfcc14881c548408a1f71912646a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosionPrefab: {fileID: 1666578145953662, guid: cb3185c8ca19e6d48a5dfd32eaa6dad4,
+    type: 2}
 --- !u!135 &135801793868140220
 SphereCollider:
   m_ObjectHideFlags: 1
